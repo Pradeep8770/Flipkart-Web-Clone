@@ -6,13 +6,15 @@
 body {
   font-family: var(--Roboto);
   line-height: 1.4rem;
+  background-color: var(--background-color);
 }
 
 a {
   text-decoration: none;
+  color: #000;
 }
-a,li,p,span{
-  font-size: 1.6rem;
+a, fieldset, input, label, legend, li, p, span{
+  font-size: 1rem;
 }
 
 :root {
@@ -46,7 +48,7 @@ a,li,p,span{
 }
 .navigation {
   width: 100%;
-  height: 5.59rem;
+  height: 4.59rem;
   background-color: var(--Primary-color);
   position: fixed;
   opacity: 1;
@@ -68,24 +70,25 @@ a,li,p,span{
   display: flex;
 }
 .navigation-logo {
-  width: 13.5rem;
-  height: 5.4013rem;
+  width: 10.5rem;
+  height: 4.4013rem;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .nav-logo {
   width: 7.5rem;
   height: 5.1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
 
 .nav-logo a:first-child>img {
-  width: 7.6rem;
+  width: 5.3rem;
   height: 1.5rem;
-  margin-bottom: -3p;
+  margin-bottom: -3px;
   margin-left: -1px;
 }
 .nav-logo a {
@@ -95,38 +98,39 @@ a,li,p,span{
   display: inline-block;
 }
 .nav-logo a:last-child{
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   margin-left: -2px;
 }
 .nav-logo span {
   color: var(--yellow-color);
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 .nav-logo a:last-child img {
-  width: 1rem;
-  height: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
  
 }
 
 .navigation-search{
-  width: 33.45rem;
-  height: 5.49rem;
+  width: 25.45rem;
+  height: 4.49rem;
+  margin: 0 3.7rem 0 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .search-bar{
   width: 100%;
-  height: 3.5rem;
-  margin-left: 2rem;
+  height: 2.5rem;
+  /* margin-left: 2rem; */
   background-color: var(--white-color);
   border-radius: 2px;
   display: flex;
   justify-content: space-between;
 }
-.parent-input :first-child{
+.parent-input:first-child{
   width: 100%;
   display: flex;
   border: transparent;
@@ -145,18 +149,19 @@ a,li,p,span{
   display: flex;
   align-items: center;
   justify-content: center; 
-  font-size: 24px;
+  font-size: 16px;
+  
 }
 
 .fa-icon i{
   color: var(--Primary-color);
-  font-size: 35px;
-  padding:10px;
+  font-size: 20px;
+  padding:10px 10px 10px 0;
 }
 
 .navigation-login{
-  width: 12.3rem;
-  height: 5.4rem;
+  width: 5.3rem;
+  height: 4.4rem;
   margin: 0 2rem;
 }
 .navigation-login, .parent-drop-down, .parent-login{
@@ -172,51 +177,51 @@ a,li,p,span{
 .parent-login a{
   color: #2874f0;
   width: 100%;
-  font-weight: 500;
+  font-weight: 550;
   line-height: 20px;
   background-color: #fff;
   cursor: pointer;
   border-radius: 2px;
-  height: 42px;
-  padding: 9px 40px;
+  height: 30px;
+  padding: 5px 33px;
   text-decoration: none;
   text-transform: capitalize;
   border: 1px solid #dbdbdb;
 }
 
 .navigation-more{
-  width: 5.159rem;
-  height: 5.4rem;
-  margin: 0 2rem;
+  width: 4.159rem;
+  height: 4.4rem;
+  margin: 0 1rem;
 }
 .pure-div{
-  color: var(--background-color);
+  color: var(--white-color);
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 600;
 }
 div .type-more::after{
   content: "";
   display: inline-block;
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.4rem;
+  height: 0.4rem;
   border-color: transparent #fff #fff transparent;
   border-style: solid;
   border-width: 1px;
   margin-left: 5px;
-  margin-top: 1px;
+  margin-top: 4px;
   transition: all .2s ease-in-out;
   transform: rotate(45deg);
   position: absolute;
 }
 
 .navigation-cart{
-  width: 6.3rem;
-  height: 5.403rem;
-  margin: 0 2rem;
+  width: 4.3rem;
+  height: 4.403rem;
+  margin: 0 1rem;
 }
 .navigation-cart div {
   display: inline-block;
@@ -262,4 +267,152 @@ div .pure-div div a{
 }
 .fa-shopping-cart::before{
   content: "\f07a";
+}
+
+/* _------------------------------dashboard--------------------------- */
+/* _------------------------------dashboard--------------------------- */
+
+.container{
+  max-width: 1200px;
+  margin: 90px auto 0;
+}
+.dashboard{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content:space-around;
+  position: relative;
+  background-color: var(--background-color);
+}
+.side-section{
+  width: 30%;
+}
+.side-bar{
+  width: 20%;
+  height: 700px;
+  position: sticky;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; */
+  /* margin-top: 0.8rem; */
+}
+aside{
+  display: inline-block;
+  /* padding: 0.5rem; */
+}
+.mobile-filters{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.side-filters div{
+  display: block;
+  max-width: 250px;
+  min-width: 200px;
+  margin: 2px 1px;
+}
+legend{
+  font-size: 18px;
+  text-transform:uppercase;
+  padding:0.3rem 1rem;
+  margin: 1px 0;
+  background-color: var(--white-color);
+}
+label{
+  display: block;
+  margin: 1px 0;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  background-color: var(--white-color);
+}
+.filter-btn{
+  display: block;
+  width: 100%;
+  height: 2rem;
+  text-transform: capitalize;
+  background-color: var(--light-blue);
+  color: var(--white-color);
+  font-size: 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  border: none;
+}
+input[type=checkbox]{
+  padding: 8px;
+  margin-right: 1rem;
+}
+
+
+/* -------------------parent product------------------- */
+/* -------------------parent product------------------- */
+
+.parent-product-item{
+  width: 75%;
+  /* margin-top: 0.8rem; */
+  display: flex;
+  flex-direction: column;
+}
+.product-item{
+  background-color: var(--white-color);
+  margin-bottom: 0.2rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.product-item>div{
+  height: 300px;
+}
+.product-item img{
+  width: 11rem;
+  height: auto;
+  margin: 1rem;
+}
+.phone-about{
+  width: 50%;
+}
+.phone-about h2{
+  font-weight: 550;
+  font-size: 1rem;
+  margin: 1rem 0;
+  
+}
+
+.phone-about li{
+  /* list-style-type: none; */
+  font-size: 0.9rem;
+  margin-bottom:0.2em;
+  padding-left:0.5rem ;
+}
+.phone-price{
+  width: 35%;
+}
+.phone-price p{
+  color: var(--original-black);
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 10px;
+  margin: 5px;
+}
+.phone-price p img{
+  width: 45%;
+  display: inline-block;
+  margin-bottom: -5px;
+}
+.phone-price li{
+  padding-left: 15%;
+  text-decoration: line-through;
+  font-size: 1rem;
+  list-style: none;
+  color: var(--light-gray);
+  font-weight: 400;
+  display: inline-block;
+}
+.phone-price span{
+  color: var(--green-color);
+  font-size: 0.9rem;
+  padding-left: 0.8rem;
+  font-weight: 500 ;
 }

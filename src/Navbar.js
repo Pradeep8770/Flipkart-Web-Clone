@@ -56,12 +56,12 @@ export default function Navbar() {
             </div>
             <div className="navigation-cart">
               <div className="pure-div">
-                {/* <a href="/cart">
+                <a href="/cart">
                   <div className="default-icon">
                     <i className="fas fa-shopping-cart"></i>
                     <span>Cart</span>
                   </div>
-                </a> */}
+                </a>
                 <div className="pure-div logo-text">
                   <a href="/cart">
                     <i className="fas fa-shopping-cart"></i>
