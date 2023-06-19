@@ -12,7 +12,7 @@ export default function Sidebar({ filter }) {
                 type="checkbox"
                 name="category"
                 value="apple"
-                onChange={(e) => filter(e.target.value)}
+                onChange={(e) => filter(e)}
               />
               Apple
             </label>
@@ -21,7 +21,7 @@ export default function Sidebar({ filter }) {
                 type="checkbox"
                 name="category"
                 value="huawei"
-                onChange={(e) => filter(e.target.value)}
+                onChange={(e) => filter(e)}
               />
               Huawei
             </label>
@@ -30,7 +30,7 @@ export default function Sidebar({ filter }) {
                 type="checkbox"
                 name="category"
                 value="meizu"
-                onChange={(e) => filter(e.target.value)}
+                onChange={(e) => filter(e)}
               />
               Meizu
             </label>
@@ -39,7 +39,7 @@ export default function Sidebar({ filter }) {
                 type="checkbox"
                 name="category"
                 value="samsung"
-                onChange={(e) => filter(e.target.value)}
+                onChange={(e) => filter(e)}
               />
               Samsung
             </label>
@@ -48,7 +48,7 @@ export default function Sidebar({ filter }) {
                 type="checkbox"
                 name="category"
                 value="vestel"
-                onChange={(e) => filter(e.target.value)}
+                onChange={(e) => filter(e)}
               />
               Vestel
             </label>
@@ -57,7 +57,7 @@ export default function Sidebar({ filter }) {
                 type="checkbox"
                 name="category"
                 value="xiaomi"
-                onChange={(e) => filter(e.target.value)}
+                onChange={(e) => filter(e)}
               />
               Xiaomi
             </label>
@@ -66,7 +66,7 @@ export default function Sidebar({ filter }) {
                 type="checkbox"
                 name="category"
                 value="asus"
-                onChange={(e) => filter(e.target.value)}
+                onChange={(e) => filter(e)}
               />
               Asus
             </label>

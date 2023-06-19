@@ -7,8 +7,14 @@ export default function Cantainer() {
   const [mobile, setmobile] = useState(data);
 
   const filterItems = (e) => {
+    console.log(e.target.value);
+    
     const updatedItem = data.filter((Element) => {
-      return Element.name === e;
+      if (e.target.checked){
+        return Element.name === e.target.value;
+      }else{
+        return(data)
+      }
     });
     setmobile(updatedItem);
   };
