@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import data from "./API/Data";
 import Sidebar from "./Sidebar";
-import Parentdiv from "./Parentdiv";
+import Parentdiv from "./Product";
 
 export default function Cantainer() {
   const [mobile, setmobile] = useState(data);

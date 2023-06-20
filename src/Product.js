@@ -1,26 +1,21 @@
 import React from "react";
-export default function Parentdiv({ mobile }) {
+export default function Product({ mobile }) {
   return (
     <>
       <section className="parent-product-item">
         {mobile.map((Element, index) => {
           const {
             title,
-            catagory,
             image,
-            name,
             price,
             cpu,
             camera,
             size,
             weight,
             display,
-            battery,
             memory,
             id,
-            delivery,
             instock,
-            discription,
           } = Element;
           return (
             <a href="3" key={id}>
