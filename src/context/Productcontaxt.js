@@ -10,34 +10,35 @@ const AppContext = createContext();
 const initialState = {
   isSingleLoading: false,
   isError: false,
-  singleProduct: [],
+  singleProduct:{},
 };
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const getSingleProduct = async (url) => {
+    console.log('url' ,url);
+    
     dispatch({ type: "SET_SINGLE_LOADING" });
 
     try {
-      const singleProduct = url;
-      dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
-      console.log("data success", singleProduct);
+      const Productdata = url;
+      dispatch({ type: "SET_SINGLE_PRODUCT", payload:Productdata });
     } catch (Error) {
-      dispatch({ type: "SET_SINGLE_ERROR"});
+      dispatch({ type: "SET_SINGLE_ERROR" });
     }
   };
 
-  useEffect(() => {
-    getSingleProduct(data);
-  }, []);
+  // useEffect(() => {
+  //   getSingleProduct(data);
+  // }, []);
 
-  return <AppContext.Provider>{children}</AppContext.Provider>;
+  return <AppContext.Provider value ={{...state, getSingleProduct}}>{children}</AppContext.Provider>;
 };
 
 //custom hooks
-const useProctContext = () => {
+const useProductContext = () => {
   return useContext(AppContext);
 };
 
-export { AppContext, AppProvider, useProctContext };
+export { AppContext, AppProvider, useProductContext };

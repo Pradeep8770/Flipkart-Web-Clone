@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 export default function Product({ mobile }) {
   return (
     <>
@@ -17,8 +18,9 @@ export default function Product({ mobile }) {
             id,
             instock,
           } = Element;
+
           return (
-            <a href="3" key={id}>
+            <NavLink to={`/singleproduct/${id}`} key={id}>
               <div className="product-item">
                 <div className="phone-image">
                   <img src={image} alt="product"></img>
@@ -47,7 +49,7 @@ export default function Product({ mobile }) {
                   <span>10%off</span>
                 </div>
               </div>
-            </a>
+            </NavLink>
           );
         })}
       </section>
