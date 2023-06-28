@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
-import { useProductContext } from "../../context/Productcontaxt";
+import React from "react";
 import { useParams } from "react-router-dom";
 import "./product.css";
 import data from "../../API/Data";
-import singledata from "./singledata";
 
 export default function SingleProduct() {
 
@@ -48,7 +46,7 @@ export default function SingleProduct() {
               })}
             </div>
             <div className="main-image">
-              <img src={image[1]} alt="mobile" />
+              <img src={image[0]} alt="mobile" />
             </div>
           </div>
           <div className="cartbutton">

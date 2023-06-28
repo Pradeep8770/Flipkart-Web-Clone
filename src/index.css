@@ -292,6 +292,7 @@ div .pure-div div a{
   width: 20%;
   height: 700px;
   position: sticky;
+  top: 12%;
   /* display: flex;
   flex-direction: column;
   justify-content: flex-start;

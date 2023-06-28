@@ -1,6 +1,6 @@
 .single-product {
   margin-top: 80px;
-  height: 500px;
+  /* height: 500px; */
   width: 100%;
   background-color: var(--white-color);
   display: flex;
@@ -25,9 +25,7 @@
 }
 .small-image img {
   width: 4rem;
-
   height: auto;
-  max-height: 6rem;
   margin: 0.1rem;
   padding: 0.3rem;
   border: 0.2px solid var(--light-gray);
@@ -35,8 +33,6 @@
 
 .main-image img {
   width: 270px;
-  
-  max-height: 400px;
   margin-left: 30px;
 }
 .cartbutton {

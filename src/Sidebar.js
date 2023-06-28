@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Sidebar({ filter }) {
+export default function Sidebar({ filter, PriceFilter}) {
   return (
     <>
       <aside className="side-bar">
@@ -75,11 +75,11 @@ export default function Sidebar({ filter }) {
           <div className="price-filter">
             <legend>SORT BY</legend>
             <label>
-              <input type="checkbox" name="priceTracker" />
-              Price - High To Low
+              <input type="checkbox" name="priceTracker" value="lowtohigh" onChange={(e)=>{PriceFilter(e)}}/>
+              Price - Low To High
             </label>
             <label>
-              <input type="checkbox" name="priceTracker" />
+              <input type="checkbox" name="priceTracker" value="hightolow" onChange={(e)=>{PriceFilter(e)}} />
               Price - High to Low
             </label>
           </div>
