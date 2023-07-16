@@ -56,6 +56,7 @@ export default function SingleProduct() {
               onClick={(e) => {
                 console.log(e.target);
               }}
+              onChange={()=>{}}
             >
               <span>ADD TO CART</span>
             </div>

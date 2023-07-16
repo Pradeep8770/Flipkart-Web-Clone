@@ -93,3 +93,31 @@
   grid-template-columns: 1fr 2fr 2fr;
   border-bottom: 0.1px solid var(--light-gray);
 }
+
+.img-and-btn{
+  display: flex;
+  flex-direction: column;
+}
+
+.img-cart img{
+  margin-top: 20px;
+  width: 150px;
+}
+
+.quantity-bin{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.wishlist-text h1{
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+.wishlist-text p{
+  font-size: 0.9rem ;
+}
+
+.wishlist-text h2{
+  font-size: 1rem;
+}

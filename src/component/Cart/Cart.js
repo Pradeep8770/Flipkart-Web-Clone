@@ -2,6 +2,7 @@ import React from "react";
 import "./cart.css";
 import EmptyCart from "./EmptyCart";
 import Wishlist from "./Wishlist";
+import CartItem from "./CartItem";
 
 export default function Cart() {
   return (
@@ -14,12 +15,11 @@ export default function Cart() {
               <h2>Enter pincode</h2>
             </div>
           </div>
-          <div className="middle-cart">
-            <EmptyCart/>
-          </div>
+          <EmptyCart/>
+          {/* <CartItem /> */}
         </div>
         <div className="cart-wishlist">
-          <Wishlist/>
+          <Wishlist />
         </div>
       </div>
     </>
