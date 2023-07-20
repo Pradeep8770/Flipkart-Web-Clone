@@ -1,24 +1,12 @@
 export default function SortFilter(
+  stock,
   fastdelivery,
   sortBy,
   productCompany,
-  mobile
+  Products
 ) {
-  const getFilterPrice = (mobile, sortBy) => {
-    if (sortBy && sortBy === "lowtohigh") {
-      return [...mobile].sort((a, b) => {
-        return a["price"] - b["price"];
-      });
-    } else if (sortBy && sortBy === "hightolow") {
-      return [...mobile].sort((a, b) => {
-        return b["price"] - a["price"];
-      });
-    }
-    return mobile;
-  };
-
-  const getFilterProduct = (mobile, productCompany) => {
-    return [...mobile].filter((element) => {
+  const getFilterProduct = (Products, productCompany)=>{
+    return [...Products].filter((element) => {
       if (productCompany && productCompany === "apple") {
         return element.name === "apple";
       } else if (productCompany && productCompany === "samsung") {
@@ -33,28 +21,44 @@ export default function SortFilter(
         return element.name === "xiaomi";
       } else if (productCompany && productCompany === "asus") {
         return element.name === "asus";
-      }
-      return mobile;
-    });
-  };
-
-  const getFilterStock = (mobile, fastdelivery) => {
-    return [...mobile].filter((element) => {
-        console.log(element.instock)
-      if (fastdelivery && fastdelivery === "outofstock") {
-        return element.instock === !"true";
       } else {
-        return element.delivery === "1 day";
+        return Products;
       }
     });
   };
 
-  const getProduct = getFilterProduct(mobile, productCompany);
+  const getFilterPrice = (Products, sortBy) => {
+    if (sortBy && sortBy === "lowtohigh") {
+      return [...Products].sort((a, b) => {
+        return a["price"] - b["price"];
+      });
+    } else if (sortBy && sortBy === "hightolow") {
+      return [...Products].sort((a, b) => {
+        return b["price"] - a["price"];
+      });
+    } else {
+      return Products;
+    }
+  };
+
+  const getFilterStock = (Products, fastdelivery, stock) => {
+    return [...Products].filter((element) => {
+      if (fastdelivery && fastdelivery === "fastdelivey") {
+        return element.delivery === "1 day";
+      } else if (stock && stock === "instock") {
+        return element.instock === true;
+      } else if(stock && stock === "outofstock") {
+        return element.instock === false;
+      }else{
+        return element;
+      }
+    });
+  };
+
+  const getProduct = getFilterProduct(Products, productCompany);
+  console.log("get",getProduct)
   const getPrice = getFilterPrice(getProduct, sortBy);
-  const getStock = getFilterStock(getPrice, fastdelivery);
-//   console.log("p",getPrice);
-//   console.log("pr",getProduct);
-//   console.log("s",getStock)
-//   const finalproduct = {}
-return getStock
+  const getStock = getFilterStock(getPrice, fastdelivery,stock);
+
+  return getStock;
 }

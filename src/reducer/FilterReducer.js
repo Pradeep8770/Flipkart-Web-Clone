@@ -1,20 +1,50 @@
-export default function filterReducer(state,action) {
- switch(action.type){
+export default function filterReducer(state, action) {
+  console.log(action);
+  switch (action.type) {
     case "SORT":
-    return{
-        productCompany:action.payload
-    };
+      return {
+        ...state,
+        productCompany: action.payload,
+  
+      };
     case "SORT_BY_PRICE":
-        return{
-            sortBy:action.payload
-        };
+      return {
+        ...state,
+        sortBy: action.payload,
+      };
 
     case "SORT_BY_STOCK":
-        return{
-            fastdelivery:action.payload
-        }
+      return {
+        ...state,
+        stock: action.payload,
+      };
+
+    case "FAST_DELIVRY":
+      return{
+        ...state,
+        fastdelivery:action.payload
+      }
+
+    case "CLEAR_BRAND":
+      // console.log(action.target.value)
+      return {
+        ...state,
+        productCompany: "",
+      };
+    
+    case "CLEAR_PRICE":
+      return{
+        ...state,
+        sortBy:""
+      }
+
+    case "CLEAR_STOCK":
+      return{
+        ...state,
+        stock:""
+      }
 
     default:
-        return state
- }
+      return state;
+  }
 }
