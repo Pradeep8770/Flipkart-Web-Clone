@@ -12,11 +12,22 @@ export default function Cart() {
   const cartTogle = () => {
     return cartProduct.length === 0;
   };
-  const wishlistToggle = ()=>{
-    return cartState.wishlistItem.length!==0
-  }
-  console.log("toggle w",wishlistToggle())
-  
+  const wishlistToggle = () => {
+    return cartState.wishlistItem.length !== 0;
+  };
+  console.log("toggle w", wishlistToggle());
+
+  // const price = ()=>{
+  const priceList = cartProduct.map((item) => parseFloat(item.price));
+  let total = 0;
+  priceList.forEach((prices) => {
+    total += prices;
+  });
+  //   return total
+  // }
+
+  console.log("ppp", total);
+
   return (
     <>
       <div className="main-cart-div">
@@ -31,36 +42,51 @@ export default function Cart() {
             {cartTogle() ? (
               <EmptyCart />
             ) : (
-              <CartItems cartProduct={cartProduct} cartdispatch={cartdispatch} />
+              <CartItems
+                cartProduct={cartProduct}
+                cartdispatch={cartdispatch}
+              />
             )}
-            {cartTogle() ?null:<div className="order-place">
-              <button>Place order</button>
-            </div>}
+            {cartTogle() ? null : (
+              <div className="order-place">
+                <button>Place order</button>
+              </div>
+            )}
           </div>
           <div className="cart-wishlist">
-           {wishlistToggle()? <Wishlist wishlistItem={cartState.wishlistItem} cartdispatch={cartdispatch} WishlisbtnToggle={wishlistToggle()}/>:null}
+            {wishlistToggle() ? (
+              <Wishlist
+                wishlistItem={cartState.wishlistItem}
+                cartdispatch={cartdispatch}
+                WishlisbtnToggle={wishlistToggle()}
+              />
+            ) : null}
           </div>
         </div>
         <div className="price-detail">
           <h3> PRICE DETAILS</h3>
           <div className="details">
             <div>
-              <span>Price(dff)</span>
-              <span>amount</span>
+              <span>Price ({cartProduct.length} Item)</span>
+              <span>₹{total}</span>
             </div>
             <div>
               <span>Discount</span>
-              <span>amount</span>
+              <span>₹{(total / 10).toFixed(3)}</span>
             </div>
             <div>
               <span>Delivery Charges</span>
-              <span>amount</span>
+              <span>₹40</span>
             </div>
             <div>
               <span>total amount</span>
-              <span>amount</span>
+              <span>₹{(total - total / 10).toFixed(3)}</span>
             </div>
-            <span>you will save in this order</span>
+            <div>
+              <span>
+                you will save ₹{(total / 10).toFixed(3)} in this order
+              </span>
+            </div>
           </div>
         </div>
       </div>

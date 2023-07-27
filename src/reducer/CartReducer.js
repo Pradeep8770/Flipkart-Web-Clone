@@ -5,9 +5,13 @@ export default function CartReducer(state, action) {
       const newItem = data.filter((element) => {
         return element.id === action.payload;
       });
+      const wishListProduct =state.wishlistItem.filter(
+        (item) => item.id !== action.payload
+      );
       return {
         ...state,
         cartItem: [...state.cartItem, ...newItem],
+        wishlistItem:wishListProduct
       };
 
     case "REMOVE_FROM_CART":
@@ -22,12 +26,25 @@ export default function CartReducer(state, action) {
 
     case "ADD_TO_WISHLIST":
       const wishlistProduct = state.cartItem.filter(
-        (item)=> item.id ===action.payload
-      ) 
-      return{
+        (item) => item.id === action.payload
+      );
+      const cartProduct = state.cartItem.filter(
+        (item) => item.id !== action.payload
+      );
+      return {
         ...state,
-        wishlistItem:[...state.wishlistItem,...wishlistProduct]
-      }
+        wishlistItem: [...state.wishlistItem, ...wishlistProduct],
+        cartItem: cartProduct,
+      };
+
+    case "REMOVE_FROM_WISHLIST":
+      const removedProduct = state.wishlistItem.filter(
+        (item) => item.id !== action.payload
+      );
+      return {
+        ...state,
+        wishlistItem: removedProduct,
+      };
 
     default:
       return {

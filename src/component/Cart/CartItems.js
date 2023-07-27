@@ -33,7 +33,7 @@ export default function CartItems({
                     <p>{element.memory}</p>
                     <p>seller : superconnect</p>
                     <div className="phone-price phone-price2">
-                      {/* <p>₹{element.price.replace(".", ",")}</p> */}
+                      <p>₹{element.price.replace(".", ",")}</p>
                       <li>
                         ₹
                         {(
@@ -45,7 +45,7 @@ export default function CartItems({
                     </div>
                     <h4>3 offers applied</h4>
                     <div className="cart-button">
-                      {(wishlistToggle) ? (
+                      {wishlistToggle ? (
                         <h1
                           className="save"
                           onClick={() => {
@@ -70,18 +70,33 @@ export default function CartItems({
                           SAVE FOR LATER
                         </h1>
                       )}
-                      <h1
-                        className="remove"
-                        value={element.id}
-                        onClick={(e) => {
-                          cartdispatch({
-                            type: "REMOVE_FROM_CART",
-                            payload: element.id,
-                          });
-                        }}
-                      >
-                        REMOVE
-                      </h1>
+                      {wishlistToggle ? (
+                        <h1
+                          className="remove"
+                          value={element.id}
+                          onClick={(e) => {
+                            cartdispatch({
+                              type: "REMOVE_FROM_WISHLIST",
+                              payload: element.id,
+                            });
+                          }}
+                        >
+                          REMOVE 
+                        </h1>
+                      ) : (
+                        <h1
+                          className="remove"
+                          value={element.id}
+                          onClick={(e) => {
+                            cartdispatch({
+                              type: "REMOVE_FROM_CART",
+                              payload: element.id,
+                            });
+                          }}
+                        >
+                          REMOVE
+                        </h1>
+                      )}
                     </div>
                   </div>
                   <div className="wishlist-plc">
