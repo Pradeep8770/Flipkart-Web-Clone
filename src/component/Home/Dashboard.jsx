@@ -10,11 +10,11 @@ export default function Dashboard() {
   const { filterstate, filterdispatch } = useFilterContext();
   const { stock,fastdelivery, sortBy, productCompany } = filterstate;
   const finalProduct = SortFilter(stock,fastdelivery, sortBy, productCompany, products)
-  console.log(filterstate)
+  // console.log(filterstate)
 
 
   const filterItems = (e) => {
-    console.log(e.target.category)
+    // console.log(e.target.category)
     filterdispatch({ type: "SORT", payload: e.target.value })
   };
 

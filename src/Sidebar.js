@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Sidebar({
   stock,
@@ -9,7 +9,7 @@ export default function Sidebar({
   brand,
   sortBy,
 }) {
-  console.log("stock", stock);
+  // console.log("stock", stock);
   return (
     <>
       <aside className="side-bar">

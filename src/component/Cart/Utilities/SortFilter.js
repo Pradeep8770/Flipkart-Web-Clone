@@ -56,7 +56,7 @@ export default function SortFilter(
   };
 
   const getProduct = getFilterProduct(Products, productCompany);
-  console.log("get",getProduct)
+  // console.log("get",getProduct)
   const getPrice = getFilterPrice(getProduct, sortBy);
   const getStock = getFilterStock(getPrice, fastdelivery,stock);
 

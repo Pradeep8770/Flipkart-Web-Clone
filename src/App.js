@@ -11,7 +11,7 @@ export default function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/singleproduct/:product" element={<SingleProduct/>} />
+          <Route path="/singleproduct/:productid" element={<SingleProduct/>} />
           <Route path="/cart" element={<Cart/>} />
           <Route exact path="/" element={<Dashboard/>} />
         </Routes>
