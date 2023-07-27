@@ -1,20 +1,26 @@
 import React from "react";
-export default function CartItems({ cartState, cartdispatch }) {
-  const cartProduct = cartState?.cartItem;
-  console.log("cart", cartProduct);
+export default function CartItems({
+  cartProduct,
+  wishlistToggle,
+  cartdispatch,
+}) {
+  // const cartProduct = cartState
+  // console.log("cart", cartProduct);
+  console.log("tttttttt", wishlistToggle);
+
   return (
     <>
       <div className="cart-item">
         {cartProduct &&
           cartProduct.length > 0 &&
           cartProduct.map((element) => {
-            console.log("jfdf", element);
+            // console.log("jfdf", element);
             return (
               <>
                 <div className="wishlist">
                   <div className="img-and-btn">
                     <div className="img-cart">
-                      <img src={element.image} />
+                      <img src={element.image} alt="mobile Images" />
                     </div>
                     <div className="quantity-bin">
                       <div className="increase-btn btn">+</div>
@@ -39,7 +45,31 @@ export default function CartItems({ cartState, cartdispatch }) {
                     </div>
                     <h4>3 offers applied</h4>
                     <div className="cart-button">
-                      <h1 className="save">SAVE FOR LATER</h1>
+                      {(wishlistToggle) ? (
+                        <h1
+                          className="save"
+                          onClick={() => {
+                            cartdispatch({
+                              type: "ADD_TO_CART",
+                              payload: element.id,
+                            });
+                          }}
+                        >
+                          MOVE TO CART
+                        </h1>
+                      ) : (
+                        <h1
+                          className="save"
+                          onClick={() => {
+                            cartdispatch({
+                              type: "ADD_TO_WISHLIST",
+                              payload: element.id,
+                            });
+                          }}
+                        >
+                          SAVE FOR LATER
+                        </h1>
+                      )}
                       <h1
                         className="remove"
                         value={element.id}

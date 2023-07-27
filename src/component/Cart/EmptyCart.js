@@ -10,7 +10,7 @@ export default function EmptyCart() {
         />
         <h1>Missing Cart items ?</h1>
         <p>Add items to it now</p>
-        <a href="#ej">
+        <a href="/">
           <button className="empty-cart-btn">Shop Now</button>
         </a>
       </div>

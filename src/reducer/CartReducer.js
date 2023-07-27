@@ -20,6 +20,15 @@ export default function CartReducer(state, action) {
         cartItem: removedItem,
       };
 
+    case "ADD_TO_WISHLIST":
+      const wishlistProduct = state.cartItem.filter(
+        (item)=> item.id ===action.payload
+      ) 
+      return{
+        ...state,
+        wishlistItem:[...state.wishlistItem,...wishlistProduct]
+      }
+
     default:
       return {
         ...state,
