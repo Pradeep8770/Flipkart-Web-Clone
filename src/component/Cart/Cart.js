@@ -3,30 +3,26 @@ import "./cart.css";
 import EmptyCart from "./EmptyCart";
 import Wishlist from "./Wishlist";
 import CartItems from "./CartItems";
+import Pricedetail from "./Pricedetail";
 import { useCartContext } from "../../context/Cartcontext";
+import { useState } from "react";
 
 export default function Cart() {
+  const [quantity,setquantity]=useState(1)
+
   const { cartState, cartdispatch } = useCartContext();
   const cartProduct = cartState.cartItem;
-  console.log("state", cartState);
+
   const cartTogle = () => {
     return cartProduct.length === 0;
   };
+  
   const wishlistToggle = () => {
     return cartState.wishlistItem.length !== 0;
   };
-  console.log("toggle w", wishlistToggle());
 
-  // const price = ()=>{
-  const priceList = cartProduct.map((item) => parseFloat(item.price));
-  let total = 0;
-  priceList.forEach((prices) => {
-    total += prices;
-  });
-  //   return total
-  // }
-
-  console.log("ppp", total);
+  const setIncrease=()=>{setquantity(quantity+1)}
+  const setDecrease=()=>{quantity>1? setquantity(quantity-1):setquantity(1)}
 
   return (
     <>
@@ -45,6 +41,9 @@ export default function Cart() {
               <CartItems
                 cartProduct={cartProduct}
                 cartdispatch={cartdispatch}
+                setIncrease={setIncrease}
+                setDecrease={setDecrease}
+                quantity={quantity}
               />
             )}
             {cartTogle() ? null : (
@@ -63,31 +62,8 @@ export default function Cart() {
             ) : null}
           </div>
         </div>
-        <div className="price-detail">
-          <h3> PRICE DETAILS</h3>
-          <div className="details">
-            <div>
-              <span>Price ({cartProduct.length} Item)</span>
-              <span>₹{total}</span>
-            </div>
-            <div>
-              <span>Discount</span>
-              <span>₹{(total / 10).toFixed(3)}</span>
-            </div>
-            <div>
-              <span>Delivery Charges</span>
-              <span>₹40</span>
-            </div>
-            <div>
-              <span>total amount</span>
-              <span>₹{(total - total / 10).toFixed(3)}</span>
-            </div>
-            <div>
-              <span>
-                you will save ₹{(total / 10).toFixed(3)} in this order
-              </span>
-            </div>
-          </div>
+        <div className="price-section">
+          <Pricedetail cartProduct={cartProduct}/>
         </div>
       </div>
     </>

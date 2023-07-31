@@ -1,4 +1,4 @@
-.main-cart-div{
+.main-cart-div {
   display: flex;
   margin-top: 90px;
   flex-direction: row;
@@ -86,7 +86,6 @@
 /* ---------whishlist----------- */
 /* ---------whishlist----------- */
 
-
 .cart-wishlist {
   margin-top: 2.5rem;
 }
@@ -117,6 +116,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   width: 30px;
   height: 30px;
   font-size: 20px;
@@ -175,6 +175,7 @@
   margin-top: 25px;
 }
 .cart-button h1 {
+  cursor: pointer;
   margin-top: 50px;
   display: inline;
   font-size: 1rem;
@@ -187,19 +188,19 @@
   margin-left: 60px;
 }
 
-.wishlist-plc{
+.wishlist-plc {
   margin-top: 20px;
 }
-.wishlist-plc p{
-font-size: 15px;
-font-weight: 100;
+.wishlist-plc p {
+  font-size: 15px;
+  font-weight: 100;
 }
-.wishlist-plc h3{
+.wishlist-plc h3 {
   padding: 20px 0;
   font-weight: 100;
   font-size: 15px;
 }
-.order-place{
+.order-place {
   position: sticky;
   bottom: 0;
   display: flex;
@@ -209,7 +210,7 @@ font-weight: 100;
   height: 5rem;
   border: 1px groove var(--light-gray);
 }
-.order-place button{
+.order-place button {
   width: 180px;
   height: 50px;
   margin-right: 20px;
@@ -218,19 +219,28 @@ font-weight: 100;
   background-color: var(--orange-medium);
   border: none;
   padding: 2px;
+  cursor: pointer;
 }
-.price-detail{
+.price-section {
   width: 30%;
-  height: 300px;
+  height: 320px;
   background-color: var(--white-color);
 }
 .price-detail h3 {
   padding: 15px;
   border-bottom: 1px solid var(--light-gray);
 }
-.details div{
+.details div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 15px;
+}
+
+.details .total-amount {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  border-bottom: 2px dotted var(--light-gray);
+  border-top: 2px dotted var(--light-gray);
 }

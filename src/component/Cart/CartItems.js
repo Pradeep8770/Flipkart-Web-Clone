@@ -3,10 +3,10 @@ export default function CartItems({
   cartProduct,
   wishlistToggle,
   cartdispatch,
+  quantity,
+  setIncrease,
+  setDecrease
 }) {
-  // const cartProduct = cartState
-  // console.log("cart", cartProduct);
-  console.log("tttttttt", wishlistToggle);
 
   return (
     <>
@@ -23,9 +23,11 @@ export default function CartItems({
                       <img src={element.image} alt="mobile Images" />
                     </div>
                     <div className="quantity-bin">
-                      <div className="increase-btn btn">+</div>
-                      <div className="quantity btn">1</div>
-                      <div className="increase-btn btn">-</div>
+                      <div className="increase-btn btn" onClick={setIncrease}>
+                        +
+                      </div>
+                      <div className="quantity btn">{quantity}</div>
+                      <div className="increase-btn btn" onClick={setDecrease}>-</div>
                     </div>
                   </div>
                   <div className="wishlist-text">
@@ -74,14 +76,14 @@ export default function CartItems({
                         <h1
                           className="remove"
                           value={element.id}
-                          onClick={(e) => {
+                          onClick={() => {
                             cartdispatch({
                               type: "REMOVE_FROM_WISHLIST",
                               payload: element.id,
                             });
                           }}
                         >
-                          REMOVE 
+                          REMOVE
                         </h1>
                       ) : (
                         <h1
