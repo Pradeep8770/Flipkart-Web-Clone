@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Searchbar from "./Searchbar";
 
 export default function Navbar() {
   return (
@@ -27,17 +28,7 @@ export default function Navbar() {
               </div>
             </div>
             <div className="navigation-search">
-              <div className="search-bar">
-                <div className="parent-input">
-                  <input
-                    type="text"
-                    placeholder="Search for product, brands and more"
-                  />
-                </div>
-                <div className="fa-icon">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-              </div>
+              <Searchbar />
             </div>
             <div className="navigation-login">
               <Link to="/login">
@@ -69,10 +60,8 @@ export default function Navbar() {
                     <span>Cart</span>
                   </Link>
                 </div>
-
               </div>
-
-              </div>
+            </div>
           </div>
           <div></div>
         </div>

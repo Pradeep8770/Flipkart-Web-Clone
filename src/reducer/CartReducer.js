@@ -5,13 +5,13 @@ export default function CartReducer(state, action) {
       const newItem = data.filter((element) => {
         return element.id === action.payload;
       });
-      const wishListProduct =state.wishlistItem.filter(
+      const wishListProduct = state.wishlistItem.filter(
         (item) => item.id !== action.payload
       );
       return {
         ...state,
         cartItem: [...state.cartItem, ...newItem],
-        wishlistItem:wishListProduct
+        wishlistItem: wishListProduct,
       };
 
     case "REMOVE_FROM_CART":
@@ -45,6 +45,17 @@ export default function CartReducer(state, action) {
         ...state,
         wishlistItem: removedProduct,
       };
+
+    case "PRICE_INCREAMENT":
+      const price = state.cartItem.map((element)=>{
+        return element.price
+      })
+     const total=price.reduce((accumulator,curElem)=>curElem + accumulator )
+      console.log("price",total)
+      return{
+        ...state,
+        totalamount:price,
+      }
 
     default:
       return {

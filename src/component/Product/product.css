@@ -24,6 +24,7 @@
   justify-content: flex-start;
 }
 .small-image img {
+  cursor: pointer;
   width: 4rem;
   height: auto;
   margin: 0.1rem;
@@ -44,6 +45,7 @@
 }
 .addbtn,
 .buybtn {
+  cursor: pointer;
   width: 12rem;
   height: 3rem;
   background-color: var(--orange-color);

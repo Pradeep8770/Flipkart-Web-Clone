@@ -7,6 +7,7 @@ const initialState = {
   fastdelivery: "",
   productCompany: "",
   sortBy: [],
+  searchquery:""
 };
 
 export const FilterContextProvider = ({ children }) => {

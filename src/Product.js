@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
+
 export default function Product({ mobile }) {
-  // console.log({ mobile });
+  // const {searchText}=useUserContext()
   return (
     <>
       <section className="parent-product-item">

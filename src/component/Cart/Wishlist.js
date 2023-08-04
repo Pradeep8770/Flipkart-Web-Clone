@@ -1,7 +1,7 @@
 import React from "react";
 import CartItems from "./CartItems";
 
-export default function Wishlist({wishlistItem,WishlisbtnToggle,cartdispatch}) {
+export default function Wishlist({wishlistItem,WishlisbtnToggle,cartdispatch,quantity}) {
   // const wishlistItem = cartState.wishlistItem
   return (
     <>
@@ -9,7 +9,7 @@ export default function Wishlist({wishlistItem,WishlisbtnToggle,cartdispatch}) {
         <div className="up-cart">
           <h1>SAVE FOR LATER</h1>
         </div>
-        <CartItems cartProduct={wishlistItem} wishlistToggle={WishlisbtnToggle} cartdispatch={cartdispatch}/>
+        <CartItems cartProduct={wishlistItem} wishlistToggle={WishlisbtnToggle} cartdispatch={cartdispatch} quantity={quantity}/>
       </div>
     </>
   );

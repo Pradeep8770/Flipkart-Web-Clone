@@ -3,6 +3,7 @@ export default function SortFilter(
   fastdelivery,
   sortBy,
   productCompany,
+  searchquery,
   Products
 ) {
   const getFilterProduct = (Products, productCompany)=>{
@@ -55,10 +56,23 @@ export default function SortFilter(
     });
   };
 
+  const getSerchProduct =(product,searchquery)=>{
+    if (searchquery===""){
+      return product
+    }else{
+      const namelist = product.filter((elem)=>{
+        return elem.name.includes(searchquery)
+      })
+      return namelist
+    }
+  }
+
   const getProduct = getFilterProduct(Products, productCompany);
   // console.log("get",getProduct)
   const getPrice = getFilterPrice(getProduct, sortBy);
   const getStock = getFilterStock(getPrice, fastdelivery,stock);
+  const searchProduct = getSerchProduct(getStock,searchquery)
+  console.log("serch",searchProduct)
 
-  return getStock;
+  return searchProduct;
 }

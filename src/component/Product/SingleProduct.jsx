@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useCartContext } from "../../context/Cartcontext";
 import "./product.css";
 import data from "../../API/Data";
 
 export default function SingleProduct() {
+  const [imageindex,setimageindex]=useState(0)
   const { cartState, cartdispatch } = useCartContext()
   // console.log("st", { cartState })
 
@@ -35,23 +36,24 @@ export default function SingleProduct() {
     // console.log(cartItemid)
     return cartItemid.includes(id)
   }
+
   return (
     <div className="single-product">
       <div className="image-button">
         <div className="single-product-img">
           <div className="small-image">
-            {image.map((element) => {
+            {image.map((element,index) => {
               return (
                 <>
                   <div>
-                    <img src={element} alt="product iamge" />
+                    <img src={element} alt="product iamge" onMouseOver={()=>setimageindex(index)}/>
                   </div>
                 </>
               );
             })}
           </div>
           <div className="main-image">
-            <img src={image[0]} alt="mobile" />
+            <img src={image[imageindex]} alt="mobile" />
           </div>
         </div>
         <div className="cartbutton">

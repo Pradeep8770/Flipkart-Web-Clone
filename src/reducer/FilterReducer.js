@@ -4,6 +4,7 @@ export default function filterReducer(state, action) {
     case "SORT":
       return {
         ...state,
+        searchquery:"",
         productCompany: action.payload,
   
       };
@@ -42,6 +43,13 @@ export default function filterReducer(state, action) {
       return{
         ...state,
         stock:""
+      }
+
+    case "SEARCH_QUERY":
+      return{
+        ...state,
+        productCompany:"",
+        searchquery:action.payload
       }
 
     default:

@@ -5,24 +5,18 @@ import Wishlist from "./Wishlist";
 import CartItems from "./CartItems";
 import Pricedetail from "./Pricedetail";
 import { useCartContext } from "../../context/Cartcontext";
-import { useState } from "react";
 
 export default function Cart() {
-  const [quantity,setquantity]=useState(1)
-
   const { cartState, cartdispatch } = useCartContext();
   const cartProduct = cartState.cartItem;
 
   const cartTogle = () => {
     return cartProduct.length === 0;
   };
-  
+
   const wishlistToggle = () => {
     return cartState.wishlistItem.length !== 0;
   };
-
-  const setIncrease=()=>{setquantity(quantity+1)}
-  const setDecrease=()=>{quantity>1? setquantity(quantity-1):setquantity(1)}
 
   return (
     <>
@@ -41,9 +35,7 @@ export default function Cart() {
               <CartItems
                 cartProduct={cartProduct}
                 cartdispatch={cartdispatch}
-                setIncrease={setIncrease}
-                setDecrease={setDecrease}
-                quantity={quantity}
+                totalamount = {cartState.totalamount}
               />
             )}
             {cartTogle() ? null : (
@@ -63,7 +55,7 @@ export default function Cart() {
           </div>
         </div>
         <div className="price-section">
-          <Pricedetail cartProduct={cartProduct}/>
+          <Pricedetail cartProduct={cartProduct} />
         </div>
       </div>
     </>

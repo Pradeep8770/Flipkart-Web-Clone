@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 export default function CartItems({
   cartProduct,
   wishlistToggle,
   cartdispatch,
-  quantity,
-  setIncrease,
-  setDecrease
+  totalamount,
 }) {
+  const [quantity, setquantity] = useState(1);
 
+  const setIncrease = () => {
+    cartdispatch({type:"PRICE_INCREAMENT"})
+  };
+  const setDecrease = () => {
+    quantity > 1 ? setquantity(quantity - 1) : setquantity(1);
+  };
+
+  console.log(totalamount)
   return (
     <>
       <div className="cart-item">
@@ -27,7 +34,9 @@ export default function CartItems({
                         +
                       </div>
                       <div className="quantity btn">{quantity}</div>
-                      <div className="increase-btn btn" onClick={setDecrease}>-</div>
+                      <div className="increase-btn btn" onClick={setDecrease}>
+                        -
+                      </div>
                     </div>
                   </div>
                   <div className="wishlist-text">
