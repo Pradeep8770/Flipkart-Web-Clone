@@ -9,6 +9,7 @@ import { useCartContext } from "../../context/Cartcontext";
 export default function Cart() {
   const { cartState, cartdispatch } = useCartContext();
   const cartProduct = cartState.cartItem;
+  console.log({ cartState });
 
   const cartTogle = () => {
     return cartProduct.length === 0;
@@ -35,7 +36,7 @@ export default function Cart() {
               <CartItems
                 cartProduct={cartProduct}
                 cartdispatch={cartdispatch}
-                totalamount = {cartState.totalamount}
+                totalamount={cartState.totalamount}
               />
             )}
             {cartTogle() ? null : (
@@ -55,7 +56,7 @@ export default function Cart() {
           </div>
         </div>
         <div className="price-section">
-          <Pricedetail cartProduct={cartProduct} />
+          <Pricedetail totalamount={cartState.totalamount} cartProduct={cartProduct} />
         </div>
       </div>
     </>

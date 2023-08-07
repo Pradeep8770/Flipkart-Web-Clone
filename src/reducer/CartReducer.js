@@ -2,9 +2,14 @@ import data from "../API/Data";
 export default function CartReducer(state, action) {
   switch (action.type) {
     case "ADD_TO_CART":
-      const newItem = data.filter((element) => {
-        return element.id === action.payload;
-      });
+      const newItem = data
+        .filter((element) => element.id == action.payload)
+        .map((element) => {
+          return { ...element, quantity: 1 };
+        });
+
+      console.log(newItem);
+
       const wishListProduct = state.wishlistItem.filter(
         (item) => item.id !== action.payload
       );
@@ -46,16 +51,52 @@ export default function CartReducer(state, action) {
         wishlistItem: removedProduct,
       };
 
-    case "PRICE_INCREAMENT":
-      const price = state.cartItem.map((element)=>{
-        return element.price
-      })
-     const total=price.reduce((accumulator,curElem)=>curElem + accumulator )
-      console.log("price",total)
-      return{
+    case "INCREASE_QUANTITY":
+      let productIncreasedQuantity = state.cartItem.map((element) => {
+        if (element.id == action.payload) {
+          return { ...element, quantity: element.quantity + 1 };
+        } else {
+          return element;
+        }
+      });
+
+      return {
         ...state,
-        totalamount:price,
-      }
+        cartItem: productIncreasedQuantity,
+      };
+
+    case "DECREASE_QUANTITY":
+      let productDecreaseQuantity = state.cartItem.map((element) => {
+        let decreasedQuantity =
+          element.quantity > 1 ? element.quantity - 1 : element.quantity;
+        if (element.id == action.payload) {
+          return { ...element, quantity: decreasedQuantity };
+        } else {
+          return element;
+        }
+      });
+
+      return {
+        ...state,
+        cartItem: productDecreaseQuantity,
+      };
+
+    case "TOTAL_AMOUNTE":
+      const productPricewithQuantity = state.cartItem.map((elem) => {
+        return parseFloat(elem.price) * elem.quantity;
+      });
+      const totalPrice = productPricewithQuantity.reduce(
+        (accumulator, currentValue) => {
+          return (accumulator =
+            parseFloat(accumulator) + parseFloat(currentValue));
+        },
+        0
+      );
+
+      return {
+        ...state,
+        totalamount: totalPrice,
+      };
 
     default:
       return {
