@@ -32,7 +32,7 @@ export default function Navbar() {
             </div>
             <div className="navigation-login">
               <Link to="/login">
-                <div className="parent-drop-down">
+                <div className="parent-drop-down" onClick={()=>{}}>
                   <div className="parent-login">
                     <Link to="/login">Login</Link>
                   </div>
