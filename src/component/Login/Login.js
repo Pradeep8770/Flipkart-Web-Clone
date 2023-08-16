@@ -1,14 +1,25 @@
 import React, { useState } from "react";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../Auothentication/Firebase";
 import "./Login.css";
 
+
 export default function Login() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const [usermoblile, setusermobile] = useState();
+  const [otp, setotp] = useState("");
+  const [invalidotp, setinvelidotp] = useState(false)
   const [toggle, settoggle] = useState(true);
   const [newuserbtn, setnewuserbtn] = useState(true);
   const [loginSection, setLoginSection] = useState(
     "login-section show-login-section"
   );
   const [loginform, setLoginform] = useState("login-form show-login-container");
+
+  console.log({ location })
 
   const hideLoginHandler = () => {
     setLoginSection("login-section");
@@ -17,13 +28,64 @@ export default function Login() {
   const userInputhandler = (e) => {
     setusermobile(e.target.value);
   };
+
+  const generateRecaptcha = () => {
+    window.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
+      'size': 'invisible',
+      'callback': (response) => {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+        // onSignInSubmit();
+      }
+    });
+  }
+
+  const requestOtp = (e) => {
+    // e.preventDefault();
+    if (usermoblile.length >= 10) {
+      // console.log({usermoblile})
+      generateRecaptcha();
+      let appVerifier = window.recaptchaVerifier;
+      console.log("Captchaverified", appVerifier)
+      const phoneNumber = "+91" + usermoblile
+      signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+        .then((confirmationResult) => {
+          // SMS sent. Prompt user to type the code from the message, then sign the
+          // user in with confirmationResult.confirm(code).
+          window.confirmationResult = confirmationResult;
+          // ...
+          console.log("otp sent sucessfully")
+          settoggle(false);
+        }).catch((error) => {
+          // Error; SMS not sent
+          // ...
+          console.log("otp not sent", { error })
+        });
+    }
+  }
+
+  const verifyOtp = () => {
+    const confirmationResult = window.confirmationResult
+    confirmationResult.confirm(otp).then((result) => {
+      // User signed in successfully.
+      const user = result.user;
+      // ...
+      console.log("user is verified", user)
+      navigate("/")
+    }).catch((error) => {
+      // User couldn't sign in (bad verification code?)
+      // ...
+      setinvelidotp(true)
+      console.log("otp error", error)
+    });
+  }
+
   return (
     <>
       <div className={loginSection}>
         <div className={loginform}>
           <span
-            className="removed-class"
-            onClick={() => {
+            className="removed-class" onClick={() => {
+
               hideLoginHandler();
             }}
           >
@@ -53,9 +115,11 @@ export default function Login() {
                     <input
                       type="text"
                       placeholder="__"
+                      autoFocus
                       value={usermoblile}
                       onChange={userInputhandler}
                     />
+                    <div id="sign-in-button"></div>
                     <label>Enter Email/Mobile number</label>
                   </div>
                   <div className="line"></div>
@@ -67,7 +131,7 @@ export default function Login() {
                     <div
                       className="otp-btn"
                       onClick={() => {
-                        settoggle(false);
+                        requestOtp();
                       }}
                     >
                       <h2>Request OTP</h2>
@@ -119,9 +183,21 @@ export default function Login() {
                         Change
                       </span>
                     </p>
-                    <input />
+                    <input
+                      type="text"
+                      value={otp}
+                      max={6}
+                      onChange={(e) => {
+                        setotp(e.target.value);
+                      }}
+                    />
+                    {invalidotp ?
+                      <div className="invalid-otp">
+                        <p>please enter valid OTP</p>
+                      </div> : null}
                   </div>
-                  <div className="verify-btn">
+                  <div className="verify-btn" onClick={() => { verifyOtp() }}
+                  >
                     <h4>Verify</h4>
                   </div>
                   <div className="resend">

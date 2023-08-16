@@ -47,7 +47,7 @@ export default function Dashboard() {
     return toggle
   }
 
-  console.log("toggle", toggledashboard().length === 0)
+  // console.log("toggle", toggledashboard().length === 0)
 
   return (
     <>{

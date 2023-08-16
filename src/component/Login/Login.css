@@ -120,10 +120,9 @@
   margin-bottom: 1rem;
   margin-top: 2rem;
 }
-p span{
+p span {
   color: var(--Primary-color);
   font-size: 0.8rem;
-
 }
 .right-up .otp-btn {
   width: 100%;
@@ -134,9 +133,10 @@ p span{
   justify-content: center;
   color: var(--white-color);
   font-size: 0.7rem;
+  cursor: pointer;
 }
 
-.newuser-btn{
+.newuser-btn {
   position: absolute;
   bottom: 3rem;
   color: var(--Primary-color);
@@ -145,7 +145,7 @@ p span{
   justify-self: baseline;
   cursor: pointer;
 }
-.existing-user-btn{
+.existing-user-btn {
   width: 100%;
   height: 3rem;
   color: var(--Primary-color);
@@ -156,40 +156,49 @@ p span{
   align-items: center;
   justify-content: center;
   font-size: 0.6rem;
+  cursor: pointer;
 }
-.existing-user-btn:hover{
+.existing-user-btn:hover {
   box-shadow: 0 6px 6px 0.3px var(--light-gray);
 }
 
 /* -------------otp verify---------------- */
 /* -------------otp verify---------------- */
-.login-verification{
+.login-verification {
   display: flex;
   justify-content: center;
-  margin:2rem;
+  margin: 2rem;
   text-align: center;
 }
 
-.verification-group .verify-input{
+.verification-group .verify-input {
   margin: 1rem;
   padding: 1.5rem;
   font-size: 1rem;
   font-weight: 100;
 }
-.verify-input span{
+.verify-input span {
   color: var(--Primary-color);
-  font-weight:bold;
+  font-weight: bold;
   margin: 0 5px;
+  cursor: pointer;
 }
-.verify-input input{
+.verify-input input {
   margin-top: 3rem;
   outline: none;
   border: none;
   border-bottom: 1px solid var(--light-gray);
   padding: 0 2rem;
 }
-
-.verify-btn{
+.verify-input input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+.verify-input .invalid-otp {
+  color: red;
+  margin-top: 3px;
+}
+.verify-btn {
   background-color: var(--Primary-color);
   width: 100%;
   height: 3rem;
@@ -199,13 +208,15 @@ p span{
   color: var(--white-color);
   font-size: 1rem;
   font-weight: 100;
+  cursor: pointer;
 }
-.verification-group .resend{
+.verification-group .resend {
   margin-top: 2rem;
   font-size: 2px;
   color: var(--gray-color);
 }
-.resend span{
+.resend span {
   color: var(--Primary-color);
   font-weight: bold;
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
+import LoginLogout from "./LoginLogout";
 
 export default function Navbar() {
   return (
@@ -31,13 +32,7 @@ export default function Navbar() {
               <Searchbar />
             </div>
             <div className="navigation-login">
-              <Link to="/login">
-                <div className="parent-drop-down" onClick={()=>{}}>
-                  <div className="parent-login">
-                    <Link to="/login">Login</Link>
-                  </div>
-                </div>
-              </Link>
+              <LoginLogout/>
             </div>
             <div className="navigation-more">
               <div className="pure-div">
