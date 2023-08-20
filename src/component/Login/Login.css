@@ -19,7 +19,7 @@
   left: 50%;
   /* transition: 2s ease-in-out; */
   width: 45rem;
-  height: 35rem;
+  height: 75vh;
   padding: 0 2rem;
   transform: translate(-50%, -50%);
 }
@@ -184,6 +184,8 @@ p span {
   cursor: pointer;
 }
 .verify-input input {
+  text-align: center;
+  width: 150px;
   margin-top: 3rem;
   outline: none;
   border: none;

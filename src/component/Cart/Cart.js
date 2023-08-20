@@ -45,6 +45,12 @@ export default function Cart() {
               </div>
             )}
           </div>
+          {cartTogle() ?
+            null
+            :
+            <div className="price-section price-section-1000">
+              <Pricedetail totalamount={cartState.totalamount} cartProduct={cartProduct} />
+            </div>}
           <div className="cart-wishlist">
             {wishlistToggle() ? (
               <Wishlist

@@ -221,10 +221,17 @@
   padding: 2px;
   cursor: pointer;
 }
+
+/* -------------price section------------ */
+/* -------------price section------------ */
 .price-section {
+  padding: 2px;
   width: 30%;
   height: 320px;
   background-color: var(--white-color);
+}
+.price-section-1000{
+  display: none;
 }
 .price-detail h3 {
   padding: 15px;
@@ -243,4 +250,25 @@
   font-weight: bold;
   border-bottom: 2px dotted var(--light-gray);
   border-top: 2px dotted var(--light-gray);
+}
+
+@media screen and (max-width:980px) {
+  .main-cart-div{
+    margin-top: 75px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .parent-cart{
+    width: 90%;
+  }
+  .price-section{
+    display: none;
+  }
+  .price-section-1000{
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
 }

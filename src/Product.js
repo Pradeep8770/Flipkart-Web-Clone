@@ -35,6 +35,7 @@ export default function Product({ mobile }) {
                   <li>{camera}</li>
                   <li>{cpu}</li>
                   <li>{weight}</li>
+                  <li className="lg-price">₹{price.replace(".", ",")}</li>
                   <li>product : {instock ? "instock" : "out of stock"}</li>
                 </div>
                 <div className="phone-price">

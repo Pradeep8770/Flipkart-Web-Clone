@@ -92,6 +92,7 @@ export default function SingleProduct() {
           <li>{camera}</li>
           <li>{cpu}</li>
           <li>{weight}</li>
+          <li className="lg-price">₹{price.replace(".", ",")}</li>
           <li>{instock ? "instock" : "out of stock"}</li>
         </div>
         <div className="phone-price cart-mobiel-price">

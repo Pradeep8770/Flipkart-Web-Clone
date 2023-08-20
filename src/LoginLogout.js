@@ -5,10 +5,11 @@ import { signOut } from 'firebase/auth';
 // console.log("fromlogin",auth.currentUser)
 
 
-export default function LoginLogout() {
-    const [isLogin,setisLogin]=useState()
+export default function LoginLogout({ setloginState }) {
+    const [isLogin, setisLogin] = useState()
 
     const logOutHandler = () => {
+
         signOut(auth).then(() => {
             // Sign-out successful.
             console.log("sign out succefull")
@@ -17,24 +18,32 @@ export default function LoginLogout() {
             console.log("sign out error", error)
         });
     }
-    useEffect(() => {
-    console.log("userauthvalue",auth.currentUser)
 
-        if(auth.currentUser){
+    function onChangeHandler(e) {
+        e.preventDefault();
+        setloginState(true)
+        window.history.pushState(null, '', "/login")
+    }
+
+    setTimeout(() => {
+        console.log("userauthvalue", auth.currentUser)
+
+        if (auth.currentUser) {
             setisLogin(false)
-        }else{
+        } else {
             setisLogin(true)
         }
-        
-    },[isLogin]);
-    console.log({isLogin})
-   
+
+    }, 500);
+    console.log({ isLogin })
+
     return (<>
         {isLogin ?
-            <Link to="/login">
-                <div className="parent-drop-down" onClick={() => { }}>
+            <Link to="">
+                <div className="parent-drop-down" onClick={onChangeHandler}>
                     <div className="parent-login">
-                        <Link to="/login">Login</Link>
+                        <Link to="">Login</Link>
+                        <i class="fa-solid fa-right-to-bracket"></i>
                     </div>
                 </div>
             </Link>
@@ -43,6 +52,7 @@ export default function LoginLogout() {
                 <div className="parent-drop-down" onClick={() => { logOutHandler() }}>
                     <div className="parent-login">
                         <Link to="">logout</Link>
+                        <i class="fa-solid fa-right-from-bracket"></i>
                     </div>
                 </div>
             </Link>

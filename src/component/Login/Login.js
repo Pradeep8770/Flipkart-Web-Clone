@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,8 @@ import { auth } from "../../Auothentication/Firebase";
 import "./Login.css";
 
 
-export default function Login() {
+export default function Login({ loginState = true, setloginState = function () { } }) {
+  console.log({ loginState })
   const location = useLocation()
   const navigate = useNavigate()
   const [usermoblile, setusermobile] = useState();
@@ -14,20 +15,31 @@ export default function Login() {
   const [invalidotp, setinvelidotp] = useState(false)
   const [toggle, settoggle] = useState(true);
   const [newuserbtn, setnewuserbtn] = useState(true);
-  const [loginSection, setLoginSection] = useState(
-    "login-section show-login-section"
-  );
-  const [loginform, setLoginform] = useState("login-form show-login-container");
+  const [loginSection, setLoginSection] = useState("login-section");
+  const [loginform, setLoginform] = useState("login-form");
 
-  console.log({ location })
+  const from = location?.pathname;
+  console.log(from)
 
-  const hideLoginHandler = () => {
-    setLoginSection("login-section");
-    setLoginform("login-form");
-  };
+
+  useEffect(() => {
+    if (loginState === false) {
+      setLoginSection("login-section");
+      setLoginform("login-form");
+    } else {
+      setLoginSection("login-section show-login-section")
+      setLoginform("login-form show-login-container")
+    }
+  }, [loginState])
+
   const userInputhandler = (e) => {
     setusermobile(e.target.value);
   };
+
+  const removHandler = ()=>{
+    setloginState(false)
+    navigate('/')
+  }
 
   const generateRecaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
@@ -70,6 +82,7 @@ export default function Login() {
       const user = result.user;
       // ...
       console.log("user is verified", user)
+      setloginState(false)
       navigate("/")
     }).catch((error) => {
       // User couldn't sign in (bad verification code?)
@@ -84,10 +97,7 @@ export default function Login() {
       <div className={loginSection}>
         <div className={loginform}>
           <span
-            className="removed-class" onClick={() => {
-
-              hideLoginHandler();
-            }}
+            className="removed-class" onClick={() => { removHandler() }}
           >
             <i class="fa-solid fa-xmark"></i>
           </span>
@@ -184,7 +194,7 @@ export default function Login() {
                       </span>
                     </p>
                     <input
-                      type="text"
+                      type="number"
                       value={otp}
                       max={6}
                       onChange={(e) => {

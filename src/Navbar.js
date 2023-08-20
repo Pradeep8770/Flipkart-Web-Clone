@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import LoginLogout from "./LoginLogout";
 
-export default function Navbar() {
+export default function Navbar({setloginState}) {
   return (
     <>
       <div className="navbar">
@@ -32,7 +32,7 @@ export default function Navbar() {
               <Searchbar />
             </div>
             <div className="navigation-login">
-              <LoginLogout/>
+              <LoginLogout setloginState={setloginState}/>
             </div>
             <div className="navigation-more">
               <div className="pure-div">
